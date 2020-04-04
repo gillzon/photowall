@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+    body {
+        margin: 0;
+        font-family: quicksand-regular;
+    }
+
+    h1 {
+        font-family: playlist;
+    }
+
+    .gallery {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 2;
+        -webkit-column-width: 100%;
+        -moz-column-width: 33%;
+        column-width: 33%;
+    }
+
+    .gallery .pics {
+        -webkit-transition: all 350ms ease;
+        transition: all 350ms ease;
+    }
+
+    .gallery .animation {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+
+    .xl-auto {
+        position: relative;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .col-xl {
+        padding: 0;
+    }
+
+    @media (max-width: 450px) {
+        .gallery {
+            -webkit-column-count: 1;
+            -moz-column-count: 1;
+            column-count: 1;
+            -webkit-column-width: 100%;
+            -moz-column-width: 100%;
+            column-width: 100%;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .btn.filter {
+            padding-left: 1.1rem;
+            padding-right: 1.1rem;
+        }
+    }
+    </style>
+    <style>
+    @font-face {
+        font-family: 'playlist';
+        src: local('playlist'),
+        url('{% static 'fonts/Playlist Script.otf' %}');
+    }
+    </style>
+    <style>
+    @font-face {
+        font-family: 'quicksand-regular';
+        src: local('quicksand-regular'),
+        url('{% static 'fonts/Quicksand-Regular.otf' %}');
+    }
+    </style>
+    <style>
+    @font-face {
+        font-family: 'quicksand-bold';
+        src: local('quicksand-bold'),
+        url('{% static 'fonts/Quicksand-Bold.otf' %}');
+    }
+    </style>
+</head>
+
+<body>
+    <a href="{% url 'home:upload_photo' query  %}?photo_room={{query}}" class="btn btn-primary btn-lg btn-block">Upload picture</a>
+    <hgroup class="mb20">
+        <h1>{{partyroom.name}} Party</h1>
+        <h2 class="lead"><strong class="text-danger">{% for object_list in object_list %}{% if forloop.last %}{{ forloop.counter }}{% endif %}{% endfor %}</strong> results were found for the search for <strong class="text-danger">{{ request.GET.q }}</strong></h2>
+    </hgroup>
+    <div class="row">
+        <!-- Define all of the tiles: -->
+        {% for photos in asdf %}
+        {% if query == asdf.createpartyroom.room_code %}
+        <div class="col-sm">
+            <div class="boxInner">
+                <img src="{{photos.photo_room_image.url}}" />
+                <div class="titleBox" hidden>Butterfly</div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% for asdf in asdf %}
+        <div class="col-sm">
+            <div class="boxInner">
+                <img src="{{asdf.photo_room_image.url}}" />
+                <div class="titleBox" hidden>Butterfly</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- /#wrap -->
+</body>
+
+</html>

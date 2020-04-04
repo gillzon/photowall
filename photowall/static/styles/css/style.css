@@ -1,0 +1,226 @@
+body,
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://images.unsplash.com/photo-1470753937643-efeb931202a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    font-family: quicksand-regular;
+}
+
+.searchbar {
+    display: flex;
+    justify-content: center;
+    border-color: #899857;
+    border-style: solid;
+    margin-bottom: 200px;
+}
+
+
+
+.messages {
+    border: none;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 2px;
+    width: 250px;
+    transition: .3s all;
+    background: none;
+    outline: 0;
+    color: white;
+    margin: auto;
+}
+
+#searchphotoform {
+    margin: auto;
+}
+
+.search_input {
+    border: none;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 2px;
+    width: 250px;
+    transition: .3s all;
+    background: none;
+    outline: 0;
+    color: white;
+}
+
+
+.search_icon {
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+    color: white;
+    text-decoration: none;
+    background-color: black;
+}
+
+
+.wrap {
+    overflow: hidden;
+    margin: 10px;
+}
+
+.box {
+    float: left;
+    position: relative;
+    width: 20%;
+    padding-bottom: 20%;
+}
+
+.boxInner {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    bottom: 10px;
+    overflow: hidden;
+}
+
+.boxInner img {
+    width: 100%;
+}
+
+.boxInner .titleBox {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: -50px;
+    background: #000;
+    background: rgba(0, 0, 0, 0.5);
+    color: #FFF;
+    padding: 10px;
+    text-align: center;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+body.no-touch .boxInner:hover .titleBox,
+body.touch .boxInner.touchFocus .titleBox {
+    margin-bottom: 0;
+}
+
+@media only screen and (max-width : 480px) {
+
+    /* Smartphone view: 1 tile */
+    .box {
+        width: 100%;
+        padding-bottom: 100%;
+    }
+}
+
+@media only screen and (max-width : 650px) and (min-width : 481px) {
+
+    /* Tablet view: 2 tiles */
+    .box {
+        width: 50%;
+        padding-bottom: 50%;
+    }
+}
+
+@media only screen and (max-width : 1050px) and (min-width : 651px) {
+
+    /* Small desktop / ipad view: 3 tiles */
+    .box {
+        width: 33.3%;
+        padding-bottom: 33.3%;
+    }
+}
+
+@media only screen and (max-width : 1290px) and (min-width : 1051px) {
+
+    /* Medium desktop: 4 tiles */
+    .box {
+        width: 25%;
+        padding-bottom: 25%;
+    }
+}
+
+.selectableImageContainer {
+    border: 1px solid #CCC;
+    padding: 5px;
+    margin: 7px;
+    float: left;
+    width: 350px;
+    text-align: center;
+}
+
+.zoom_toolbar_button {
+    height: 32px;
+    width: 32px;
+    float: right;
+    border-radius: 4px;
+    margin-left: 2px;
+    margin-top: 8px;
+    cursor: pointer;
+    border: 1px solid #000000;
+    padding: 6px 0 0 3px;
+}
+
+.approved_image_toolbar_button {
+    background-color: #8bc249;
+    height: 32px;
+    width: 32px;
+    float: right;
+    border-radius: 4px;
+    margin-left: 2px;
+    margin-top: 8px;
+    cursor: pointer;
+    padding: 6px 0 0 3px;
+}
+
+.disapproved_image_toolbar_button {
+    background-color: #bb232a;
+    height: 32px;
+    width: 32px;
+    float: right;
+    border-radius: 4px;
+    margin-left: 2px;
+    margin-top: 8px;
+    cursor: pointer;
+    padding: 6px 0 0 1px;
+}
+
+.reviewIssuesButton {
+    margin-left: 20px;
+    color: #ffffff;
+    background-color: #00aeef;
+}
+
+.markAllReviewed {
+    background-color: #00aeef;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+position: fixed;
+z-index: 1000;
+
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: white;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: white;
+}

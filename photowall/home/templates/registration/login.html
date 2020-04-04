@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Login - Photowall</title>
+  </head>
+  <body>
+    <div class="container" id="containerlogin">
+      	<div class="d-flex justify-content-center h-100" id="peder">
+      		<div class="card">
+      			<div class="card-header">
+      				<h3>Sign In</h3>
+      				<div class="d-flex justify-content-end social_icon">
+      					<span><i class="fab fa-facebook-square"></i></span>
+      					<span><i class="fab fa-google-plus-square"></i></span>
+      					<span><i class="fab fa-twitter-square"></i></span>
+      				</div>
+      			</div>
+      			<div class="card-body">
+      				<form method="post" action="{% url 'login' %}">
+    						{% csrf_token %}
+    						{% if form.errors %}
+    						{% for field in form %}
+    						{% for error in field.errors %}
+    						<div class="alert alert-danger">
+    							<strong>{{ error|escape }}</strong>
+    						</div>
+    						{% endfor %}
+    						{% endfor %}
+    						{% for error in form.non_field_errors %}
+    						<div class="alert alert-danger">
+    							<strong>{{ error|escape }}</strong>
+    						</div>
+    						{% endfor %}
+    						{% endif %}
+
+
+      					<div class="input-group form-group">
+      						<div class="input-group-prepend">
+      							<span class="input-group-text"><i class="fas fa-user"></i></span>
+      						</div>
+      						<input type="input" class="form-control" name="username" id="inputEmail" placeholder="Username" required >
+      					</div>
+      					<div class="input-group form-group">
+      						<div class="input-group-prepend">
+      							<span class="input-group-text"><i class="fas fa-key"></i></span>
+      						</div>
+      						  				<input type="password" class="form-control" name="password" id="inputPass" placeholder="Password" required>
+      					</div>
+      					<div class="row align-items-center remember">
+      						<input type="checkbox">Remember Me
+      					</div>
+      					<div class="form-group">
+      						<input type="submit" value="Login" class="btn float-right login_btn">
+    							<input type="hidden" name="next" value="{{ next }}">
+      					</div>
+      				</form>
+      			</div>
+      			<div class="card-footer">
+      				<div class="d-flex justify-content-center links">
+      					<a href="{% url 'home:register' %}">Don't have an account?</a>
+      				</div>
+
+      			</div>
+      		</div>
+      	</div>
+    	</div>
+  </body>
+</html>

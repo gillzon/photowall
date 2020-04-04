@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <style>
+        @font-face {
+        font-family: 'playlist';
+        src: local('playlist'),
+        url('{% static 'fonts/Playlist Script.otf' %}');
+    }
+    </style>
+    <style>
+        @font-face {
+        font-family: 'quicksand-regular';
+        src: local('quicksand-regular'),
+        url('{% static 'fonts/Quicksand-Regular.otf' %}');
+    }
+    </style>
+    <style>
+        @font-face {
+        font-family: 'quicksand-bold';
+        src: local('quicksand-bold'),
+        url('{% static 'fonts/Quicksand-Bold.otf' %}');
+    }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>Upload Photo</title>
+</head>
+
+<body style="font-family: quicksand-regular">
+    </div>
+    <div class="jumbotron">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% if form.errors %}
+            {% for field in form %}
+            {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}{{ field.label}}</strong>
+            </div>
+            {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}{{form.field.label}}</strong>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-primary float-right">Upload</button>
+        </form>
+    </div>
+</body>
+
+</html>
